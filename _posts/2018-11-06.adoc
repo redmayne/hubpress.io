@@ -1,0 +1,64 @@
+= 海报池
+
+:experimental:
+:stem: latexmath
+ifndef::imagesdir[:imagesdir: ../images]
+
+TIP: 开发版本：1.0.10
+
+NOTE: 方案文档：
+https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/00.业务领域/02.设计/03.解决方案/03 内容运营服务集/Content 1.0.10版本/设计规格/HiCinema Content_1.0.10_系统设计说明书.docx
+ 
+NOTE: story文档：
+https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema Content/HiCinema Content 1.0.10/03.开发/02.分析设计/01.Story设计/Story 影片运营信息增加海报池功能--（常煜玥、刘勇）.docx
+    
+
+== 业务逻辑
+海报池功能，当前只有影片集成了这个功能。出于保存运营人员历史上传的图片，设计了海报池功能，方便运营人员查找历史图片并使用。
+
+*1. 海报池在管理界面上的入口：*
+
+image:business/image-pool/entry.PNG[title="海报池入口"]
+
+
+*2. 海报池操作弹框界面：*
+
+image:business/image-pool/operate-window.PNG[title="海报池操作界面"]
+
+ 每种业务(同一个contentType/imageType/contentId)对应的海报池中最多只能存储20组图片，超过20组图片之后，新存入的图片组会替换最老的一组图片。
+ 在海报池操作界面，可以进行选择图片组的操作，选择完一组图片，点击确认之后，会替换原有的业务图片。也可以进行删除操作，删除海报池组中的图片组。
+ 
+*3. 海报池图片浮层：*
+
+image:business/image-pool/image-layer.PNG[title="海报池图片浮层"]
+
+ 对于原图片组含有多张不同类型的图片(F/M/S)，海报池弹框界面只展示F图，鼠标放上去之后，展示所有类型图片的浮层。
+ 
+*4. 海报池图片入库条件：*
+
+image:business/image-pool/save-condition.PNG[title="图片入库海报池的条件"]
+
+ 1. 修改完影片信息，保存时，会判断影片图片是否符合入库海报池的标准，符合则入库
+ 2. 从海报池操作界面，选择图片替换原有图片时，会判断被替换的原有图片是否入库海报池的标准，符合则入库。
+ 
+== 业务集成海报池功能
+海报池功能集成在图片控件imgFileUpload中，若业务要使用海报池功能，则在使用图片控件的地方更改两个传参即可。
+
+[source, html]
+----
+<img-fileupload ng-if="initVerticalPoster.imgArrays && initVerticalPoster.imgArrays.length > 0"
+                form-name="verticalPoster"
+                img-title="contentmanage.common.verticalposter.label"
+                img-form="vod_form"
+                form-type="showType"
+                img-required="false"
+                img-arrays="initVerticalPoster"
+                need-compress="true"
+                img-modified="vod.mvOperateInfo.posterModified"
+                support-history-pool="true" <1>
+                history-params="initVerticalPoster.historyParams"> <2>
+</img-fileupload>
+----
+<1> 传入supportHistoryPool参数，表示支持海报池功能。
+<2> 传入historyParams参数对象，传入海报池所需的业务参数(contentType/contentId/extId/imageType)。
+
