@@ -1,1 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://redmayne.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 06 Nov 2018 13:19:15 GMT</lastBuildDate><atom:link href="https://redmayne.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://redmayne.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 06 Nov 2018 13:21:08 GMT</lastBuildDate><atom:link href="https://redmayne.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[海报池]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+开发版本：1.0.10
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+方案文档：
+<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/00.业务领域/02.设计/03.解决方案/03" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/00.业务领域/02.设计/03.解决方案/03</a> 内容运营服务集/Content 1.0.10版本/设计规格/HiCinema Content_1.0.10_系统设计说明书.docx
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+story文档：
+<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema</a> Content/HiCinema Content 1.0.10/03.开发/02.分析设计/01.Story设计/Story 影片运营信息增加海报池功能--（常煜玥、刘勇）.docx
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_业务逻辑">业务逻辑</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>海报池功能，当前只有影片集成了这个功能。出于保存运营人员历史上传的图片，设计了海报池功能，方便运营人员查找历史图片并使用。</p>
+</div>
+<div class="paragraph">
+<p><strong>1. 海报池在管理界面上的入口：</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/entry.PNG" alt="entry" title="海报池入口"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>2. 海报池操作弹框界面：</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/operate-window.PNG" alt="operate window" title="海报池操作界面"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>每种业务(同一个contentType/imageType/contentId)对应的海报池中最多只能存储20组图片，超过20组图片之后，新存入的图片组会替换最老的一组图片。
+在海报池操作界面，可以进行选择图片组的操作，选择完一组图片，点击确认之后，会替换原有的业务图片。也可以进行删除操作，删除海报池组中的图片组。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>3. 海报池图片浮层：</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/image-layer.PNG" alt="image layer" title="海报池图片浮层"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>对于原图片组含有多张不同类型的图片(F/M/S)，海报池弹框界面只展示F图，鼠标放上去之后，展示所有类型图片的浮层。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>4. 海报池图片入库条件：</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/save-condition.PNG" alt="save condition" title="图片入库海报池的条件"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>修改完影片信息，保存时，会判断影片图片是否符合入库海报池的标准，符合则入库</p>
+</li>
+<li>
+<p>从海报池操作界面，选择图片替换原有图片时，会判断被替换的原有图片是否入库海报池的标准，符合则入库。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_业务集成海报池功能">业务集成海报池功能</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>海报池功能集成在图片控件imgFileUpload中，若业务要使用海报池功能，则在使用图片控件的地方更改两个传参即可。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;img-fileupload ng-if="initVerticalPoster.imgArrays &amp;&amp; initVerticalPoster.imgArrays.length &gt; 0"
+                form-name="verticalPoster"
+                img-title="contentmanage.common.verticalposter.label"
+                img-form="vod_form"
+                form-type="showType"
+                img-required="false"
+                img-arrays="initVerticalPoster"
+                need-compress="true"
+                img-modified="vod.mvOperateInfo.posterModified"
+                support-history-pool="true" <i class="conum" data-value="1"></i><b>(1)</b>
+                history-params="initVerticalPoster.historyParams"&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+&lt;/img-fileupload&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>传入supportHistoryPool参数，表示支持海报池功能。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>传入historyParams参数对象，传入海报池所需的业务参数(contentType/contentId/extId/imageType)。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>]]></description><link>https://redmayne.github.io2018-11-06.adoc</link><guid isPermaLink="true">https://redmayne.github.io2018-11-06.adoc</guid><dc:creator><![CDATA[Dulphie]]></dc:creator><pubDate>Tue, 06 Nov 2018 00:00:00 GMT</pubDate></item></channel></rss>
