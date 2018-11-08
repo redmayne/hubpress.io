@@ -6,12 +6,12 @@
     "cname": ""
   },
   "theme": {
-    "name": "casper"
+    "name": "saga"
   },
   "urls": {
     "site": "https://redmayne.github.io",
     "hubpress": "https://redmayne.github.io",
-    "theme": "//redmayne.github.io/themes/casper",
+    "theme": "//redmayne.github.io/themes/saga",
     "images": "https://redmayne.github.io/images"
   },
   "initialisationConfigComponent": {
