@@ -1,0 +1,85 @@
+= 数据对比
+
+:experimental:
+:stem: latexmath
+ifndef::imagesdir[:imagesdir: ../images]
+
+TIP: 开发版本：1.0.11(内部优化需求)
+ 
+NOTE: story文档：
+https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx
+
+== 业务逻辑
+
+数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。
+
+=== 广告
+
+对于广告这种新增、修改、上下架、删除都走工作流的业务，只有修改广告时，查看对应的详情信息，才会展示数据。
+
+*1. 广告历史操作记录列表*
+
+image:business/data-compare/ad-history-list.PNG[title="广告历史操作记录列表"]
+
+
+*2. 工作流类型为编辑的操作记录详情*
+
+image:business/data-compare/ad-his-compare.PNG[title="数据对比详情"]
+
+    详情页面展示的对比是当前记录的详情信息和上一次工作流类型为编辑的记录的详情信息的对比。
+    
+
+*3. 工作流类型为非编辑的操作记录详情*
+
+image:business/data-compare/ad-his-detail.PNG[title="操作记录详情"]
+    
+    详情页面不展示对比信息，只展示具体的详情信息。
+
+*4. 修改广告，查看工作流详情*
+
+image:business/data-compare/ad-workflow-compare.PNG[title="工作流详情"]
+
+    审核人员审核修改广告工作流详时，能够在详情页面明显看到本次审核的数据基于商用态的数据，修改了哪些内容。
+    
+    
+=== 栏目
+栏目，相较于其它的业务，比较特殊。只有根栏目/一级导航/频道/频道分组，这几种栏目类型需要走工作流审批，而其提交工作流为后台工作流，在提交之前对栏目做的操作不走工作流流程。所以这就导致栏目的历史操作记录中既包含工作流的操作记录和非工作流的操作记录。 +
+
+* 基于此业务背景，栏目在设计对比功能时，做了如下限制： 
+. 操作类型非上下架、删除、新增、撤销时，才会展示对比功能。
+
+. 查看工作流流程的操作记录对比详情时，对比是跟上次工作流操作记录对比。
+
+*1. 一级导航栏目的历史操作记录列表*
+
+image:business/data-compare/column-history-list.PNG[title="栏目历史操作记录列表"]
+
+*2. 查看工作流类型为编辑的操作记录详情*
+
+image:business/data-compare/column-edit-compare.PNG[title="编辑对比页面详情"]
+
+ 展示的对比信息是当前工作流详情与上一条编辑的工作流详情的对比信息
+
+*3. 提交栏目，审批人员查看工作流详情*
+
+image:business/data-compare/column-workflow-compare.PNG[title="工作流对比页面详情"]
+
+ 工作流详情页面展示的对比信息是当前工作流详情与当前商用态数据的对比信息
+
+*4. 查看操作类型为栏目内容排序的的操作记录详情* 
+
+image:business/data-compare/column-sort-compare.PNG[title="排序对比页面详情"]
+
+ 展示的对比信息是当前操作记录详情与上一条操作记录详情的对比信息
+ 
+*5. 查看工作流类型为下架的操作记录详情*
+
+image:business/data-compare/column-offsale-detail.PNG[title="下架记录页面详情"]
+
+== 业务集成对比功能
+
+业务集成对比功能，参考: +
+http://10.27.0.58:18330/#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83
+
+
+
