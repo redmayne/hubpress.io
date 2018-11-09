@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://redmayne.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 06 Nov 2018 13:21:08 GMT</lastBuildDate><atom:link href="https://redmayne.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[海报池]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://redmayne.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 09 Nov 2018 03:29:36 GMT</lastBuildDate><atom:link href="https://redmayne.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[数据对比]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -7,20 +7,7 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-开发版本：1.0.10
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-方案文档：
-<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/00.业务领域/02.设计/03.解决方案/03" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/00.业务领域/02.设计/03.解决方案/03</a> 内容运营服务集/Content 1.0.10版本/设计规格/HiCinema Content_1.0.10_系统设计说明书.docx
+开发版本：1.0.11(内部优化需求)
 </td>
 </tr>
 </table>
@@ -33,7 +20,7 @@
 </td>
 <td class="content">
 story文档：
-<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema</a> Content/HiCinema Content 1.0.10/03.开发/02.分析设计/01.Story设计/Story 影片运营信息增加海报池功能--（常煜玥、刘勇）.docx
+<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema</a> Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx
 </td>
 </tr>
 </table>
@@ -44,88 +31,129 @@ story文档：
 <h2 id="_业务逻辑">业务逻辑</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>海报池功能，当前只有影片集成了这个功能。出于保存运营人员历史上传的图片，设计了海报池功能，方便运营人员查找历史图片并使用。</p>
+<p>数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。</p>
+</div>
+<div class="sect2">
+<h3 id="_广告">广告</h3>
+<div class="paragraph">
+<p>对于广告这种新增、修改、上下架、删除都走工作流的业务，只有修改广告时，查看对应的详情信息，才会展示数据。</p>
 </div>
 <div class="paragraph">
-<p><strong>1. 海报池在管理界面上的入口：</strong></p>
+<p><strong>1. 广告历史操作记录列表</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/entry.PNG" alt="entry" title="海报池入口"></span></p>
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-history-list.PNG" alt="ad history list" title="广告历史操作记录列表"></span></p>
 </div>
 <div class="paragraph">
-<p><strong>2. 海报池操作弹框界面：</strong></p>
+<p><strong>2. 工作流类型为编辑的操作记录详情</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/operate-window.PNG" alt="operate window" title="海报池操作界面"></span></p>
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-his-compare.PNG" alt="ad his compare" title="数据对比详情"></span></p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>每种业务(同一个contentType/imageType/contentId)对应的海报池中最多只能存储20组图片，超过20组图片之后，新存入的图片组会替换最老的一组图片。
-在海报池操作界面，可以进行选择图片组的操作，选择完一组图片，点击确认之后，会替换原有的业务图片。也可以进行删除操作，删除海报池组中的图片组。</pre>
+<pre>详情页面展示的对比是当前记录的详情信息和上一次工作流类型为编辑的记录的详情信息的对比。</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>3. 海报池图片浮层：</strong></p>
+<p><strong>3. 工作流类型为非编辑的操作记录详情</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/image-layer.PNG" alt="image layer" title="海报池图片浮层"></span></p>
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-his-detail.PNG" alt="ad his detail" title="操作记录详情"></span></p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>对于原图片组含有多张不同类型的图片(F/M/S)，海报池弹框界面只展示F图，鼠标放上去之后，展示所有类型图片的浮层。</pre>
+<pre>详情页面不展示对比信息，只展示具体的详情信息。</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>4. 海报池图片入库条件：</strong></p>
+<p><strong>4. 修改广告，查看工作流详情</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="https://redmayne.github.io/images/business/image-pool/save-condition.PNG" alt="save condition" title="图片入库海报池的条件"></span></p>
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-workflow-compare.PNG" alt="ad workflow compare" title="工作流详情"></span></p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>审核人员审核修改广告工作流详时，能够在详情页面明显看到本次审核的数据基于商用态的数据，修改了哪些内容。</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_栏目">栏目</h3>
+<div class="paragraph">
+<p>栏目，相较于其它的业务，比较特殊。只有根栏目/一级导航/频道/频道分组，这几种栏目类型需要走工作流审批，而其提交工作流为后台工作流，在提交之前对栏目做的操作不走工作流流程。所以这就导致栏目的历史操作记录中既包含工作流的操作记录和非工作流的操作记录。<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>基于此业务背景，栏目在设计对比功能时，做了如下限制：</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>修改完影片信息，保存时，会判断影片图片是否符合入库海报池的标准，符合则入库</p>
+<p>操作类型非上下架、删除、新增、撤销时，才会展示对比功能。</p>
 </li>
 <li>
-<p>从海报池操作界面，选择图片替换原有图片时，会判断被替换的原有图片是否入库海报池的标准，符合则入库。</p>
+<p>查看工作流流程的操作记录对比详情时，对比是跟上次工作流操作记录对比。</p>
 </li>
 </ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>1. 一级导航栏目的历史操作记录列表</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-history-list.PNG" alt="column history list" title="栏目历史操作记录列表"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>2. 查看工作流类型为编辑的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-edit-compare.PNG" alt="column edit compare" title="编辑对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>展示的对比信息是当前工作流详情与上一条编辑的工作流详情的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>3. 提交栏目，审批人员查看工作流详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-workflow-compare.PNG" alt="column workflow compare" title="工作流对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>工作流详情页面展示的对比信息是当前工作流详情与当前商用态数据的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>4. 查看操作类型为栏目内容排序的的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-sort-compare.PNG" alt="column sort compare" title="排序对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>展示的对比信息是当前操作记录详情与上一条操作记录详情的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>5. 查看工作流类型为下架的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-offsale-detail.PNG" alt="column offsale detail" title="下架记录页面详情"></span></p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_业务集成海报池功能">业务集成海报池功能</h2>
+<h2 id="_业务集成对比功能">业务集成对比功能</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>海报池功能集成在图片控件imgFileUpload中，若业务要使用海报池功能，则在使用图片控件的地方更改两个传参即可。</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;img-fileupload ng-if="initVerticalPoster.imgArrays &amp;&amp; initVerticalPoster.imgArrays.length &gt; 0"
-                form-name="verticalPoster"
-                img-title="contentmanage.common.verticalposter.label"
-                img-form="vod_form"
-                form-type="showType"
-                img-required="false"
-                img-arrays="initVerticalPoster"
-                need-compress="true"
-                img-modified="vod.mvOperateInfo.posterModified"
-                support-history-pool="true" <i class="conum" data-value="1"></i><b>(1)</b>
-                history-params="initVerticalPoster.historyParams"&gt; <i class="conum" data-value="2"></i><b>(2)</b>
-&lt;/img-fileupload&gt;</code></pre>
+<p>业务集成对比功能，参考:<br>
+<a href="http://10.27.0.58:18330/#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83" class="bare">http://10.27.0.58:18330/#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83</a></p>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>传入supportHistoryPool参数，表示支持海报池功能。</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>传入historyParams参数对象，传入海报池所需的业务参数(contentType/contentId/extId/imageType)。</td>
-</tr>
-</table>
-</div>
-</div>
-</div>]]></description><link>https://redmayne.github.io2018-11-06.adoc</link><guid isPermaLink="true">https://redmayne.github.io2018-11-06.adoc</guid><dc:creator><![CDATA[Dulphie]]></dc:creator><pubDate>Tue, 06 Nov 2018 00:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://redmayne.github.io2018-11-09.adoc</link><guid isPermaLink="true">https://redmayne.github.io2018-11-09.adoc</guid><dc:creator><![CDATA[Dulphie]]></dc:creator><pubDate>Fri, 09 Nov 2018 00:00:00 GMT</pubDate></item></channel></rss>

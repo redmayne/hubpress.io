@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>数据对比</title>
+    <meta name="description" content="" />
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//redmayne.github.io/themes/saga/assets/css/style.css?v=1541734176324" rel="stylesheet" type="text/css">
+    <link href="//redmayne.github.io/themes/saga/assets/css/animate.min.css?v=1541734176324" rel="stylesheet" type="text/css">
+    <link href="https://redmayne.github.io/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="https://redmayne.github.io/2018-11-09.adoc" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="数据对比" />
+    <meta property="og:description" content="开发版本：1.0.11(内部优化需求) story文档： https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx 业务逻辑 数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。 广告 对于广告这种新增、修改、" />
+    <meta property="og:url" content="https://redmayne.github.io/2018-11-09.adoc" />
+    <meta property="article:published_time" content="2018-11-09T00:00:00.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="数据对比" />
+    <meta name="twitter:description" content="开发版本：1.0.11(内部优化需求) story文档： https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx 业务逻辑 数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。 广告 对于广告这种新增、修改、" />
+    <meta name="twitter:url" content="https://redmayne.github.io/2018-11-09.adoc" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "",
+    "author": {
+        "@type": "Person",
+        "name": "Dulphie",
+        "image": "https://avatars1.githubusercontent.com/u/24802117?v=4",
+        "url": "https://redmayne.github.io/author/redmayne/",
+        "description": "front-page,  java"
+    },
+    "headline": "数据对比",
+    "url": "https://redmayne.github.io/2018-11-09.adoc",
+    "datePublished": "2018-11-09T00:00:00.000Z",
+    "description": "开发版本：1.0.11(内部优化需求) story文档： https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx 业务逻辑 数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。 广告 对于广告这种新增、修改、"
+}
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="" href="https://redmayne.github.io/rss/" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism-okaidia.min.css">
+    
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body class="post-template">
+    <header id="header" class="animated fadeIn">
+    <div class="header-background">
+    <section class="blog-content">
+        <a id="site-url" class="blog-title" href="https://redmayne.github.io"></a>
+        <span class="blog-description"></span>
+        <nav class="links fadeIn animated">
+            <ul>
+                <li class="rss"><a title="RSS Feed" href="/rss/"><i class="fa fa-fw fa-rss-square"></i></a></li>
+        
+            </ul>
+        </nav>
+    </section>
+    <section class="header-content">
+        <h1 class="post-title animated fadeInUp">数据对比</h1>
+        <span class="post-data"><span class="date animated fadeInUp"><i class="fa fa-clock-o"></i> <time class="timesince date" data-timesince="1541692800" datetime="2018-11-09T00:00" title="09 November 2018">11 hours ago</time></span>
+            
+            <span class="author animated fadeInUp"><i class="fa fa-user"></i> <a href="https://redmayne.github.io/author/redmayne/">Dulphie</a></span></span>
+    </section>
+    </div>
+</header>
+<main id="main" class="content">
+    <article itemtype="http://schema.org/BlogPosting" class="animated fadeIn content post post">
+        <section class="post-content">
+            <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+开发版本：1.0.11(内部优化需求)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+story文档：
+<a href="https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema" class="bare">https://dggsvn01-ex:3690/svn/TC_CS_Video_DOC_SVN/01.Video/02.Server/03.HiCinema</a> Content/HiCinema Content 1.0.11/03.开发/02.分析设计/01.Story设计/Story【内部优化】管理页面公共对比能力分析(常煜玥、刘勇).docx
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_业务逻辑">业务逻辑</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>数据对比功能，当前只集成在栏目和广告中。栏目和广告是当前运营人员最常操作的业务，所以存在大量的历史操作记录和审批操作。而查看历史操作详情和审批详情的时候，为了方便运营人员能够直观清晰地看到前后更改的数据对比，设计了数据对比的功能。</p>
+</div>
+<div class="sect2">
+<h3 id="_广告">广告</h3>
+<div class="paragraph">
+<p>对于广告这种新增、修改、上下架、删除都走工作流的业务，只有修改广告时，查看对应的详情信息，才会展示数据。</p>
+</div>
+<div class="paragraph">
+<p><strong>1. 广告历史操作记录列表</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-history-list.PNG" alt="ad history list" title="广告历史操作记录列表"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>2. 工作流类型为编辑的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-his-compare.PNG" alt="ad his compare" title="数据对比详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>详情页面展示的对比是当前记录的详情信息和上一次工作流类型为编辑的记录的详情信息的对比。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>3. 工作流类型为非编辑的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-his-detail.PNG" alt="ad his detail" title="操作记录详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>详情页面不展示对比信息，只展示具体的详情信息。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>4. 修改广告，查看工作流详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/ad-workflow-compare.PNG" alt="ad workflow compare" title="工作流详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>审核人员审核修改广告工作流详时，能够在详情页面明显看到本次审核的数据基于商用态的数据，修改了哪些内容。</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_栏目">栏目</h3>
+<div class="paragraph">
+<p>栏目，相较于其它的业务，比较特殊。只有根栏目/一级导航/频道/频道分组，这几种栏目类型需要走工作流审批，而其提交工作流为后台工作流，在提交之前对栏目做的操作不走工作流流程。所以这就导致栏目的历史操作记录中既包含工作流的操作记录和非工作流的操作记录。<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>基于此业务背景，栏目在设计对比功能时，做了如下限制：</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>操作类型非上下架、删除、新增、撤销时，才会展示对比功能。</p>
+</li>
+<li>
+<p>查看工作流流程的操作记录对比详情时，对比是跟上次工作流操作记录对比。</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>1. 一级导航栏目的历史操作记录列表</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-history-list.PNG" alt="column history list" title="栏目历史操作记录列表"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>2. 查看工作流类型为编辑的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-edit-compare.PNG" alt="column edit compare" title="编辑对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>展示的对比信息是当前工作流详情与上一条编辑的工作流详情的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>3. 提交栏目，审批人员查看工作流详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-workflow-compare.PNG" alt="column workflow compare" title="工作流对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>工作流详情页面展示的对比信息是当前工作流详情与当前商用态数据的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>4. 查看操作类型为栏目内容排序的的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-sort-compare.PNG" alt="column sort compare" title="排序对比页面详情"></span></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>展示的对比信息是当前操作记录详情与上一条操作记录详情的对比信息</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>5. 查看工作流类型为下架的操作记录详情</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://redmayne.github.io/images/business/data-compare/column-offsale-detail.PNG" alt="column offsale detail" title="下架记录页面详情"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_业务集成对比功能">业务集成对比功能</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>业务集成对比功能，参考:<br>
+<a href="http://10.27.0.58:18330/#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83" class="bare">http://10.27.0.58:18330/#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83</a></p>
+</div>
+</div>
+</div>
+        </section>
+
+    </article>
+
+</main>
+    <footer class="animated fadeIn" id="footer">
+        <section class="colophon">
+          <section class="copyright">Copyright &copy; <span itemprop="copyrightHolder"></span>. <span rel="license">All Rights Reserved</span>.</section>
+          <section class="poweredby">Published with <a class="icon-ghost" href="https://hubpress.github.io">HubPress</a></section>
+        </section>
+        <section class="bottom">
+          <section class="attribution">
+            <a href="http://github.com/Reedyn/Saga">Built with <i class="fa fa-heart"></i> and Free and Open-Source Software</a>.
+          </section>
+        </section>
+    </footer>
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        // hljs.initHighlightingOnLoad();
+      </script>
+    <script src="//redmayne.github.io/themes/saga/assets/js/scripts.js?v=1541734176324"></script>
+
+</body>
+</html>
